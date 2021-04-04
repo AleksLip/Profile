@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All Profiles
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Profiles</h1>
+
+    {% if articles|length > 0 %}
+        {% for el in articles %}
+        <div class="alert alert-info">
+            <h2>{{ el.name}}</h2>
+            <p>{{ el.surname }}</p>
+            <p>{{ el.profile }}</p>
+            <p>{{ el.status }}</p>
+            <p>Date: {{ el.date.date() }}</p>
+            <a href="/profiles/{{ el.id }}" class="btn btn-warning">Details</a>
+        </div>
+    {% endfor %}
+    {% else %}
+    <p>There are no profiles yet</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
